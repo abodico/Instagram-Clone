@@ -48,11 +48,10 @@ import { usePathname, useRouter } from "next/navigation";
 import CancelIcon from "@mui/icons-material/Cancel";
 const drawerWidth = 240,
   drawerSmall = 70;
-const MyDrawer = () => {
+const MyDrawer = ({ sideCardsToggle, setSideCardsToggle }) => {
   const pathName = usePathname();
   const [value, setValue] = useState("recents");
   const [active, setActive] = useState(pathName);
-  const [sideCardsToggle, setSideCardsToggle] = useState("");
   const [focused, setFocused] = useState(false);
   const { data } = useSelector((state) => state.seen);
   const notificationsData = data.slice(0, 5);
@@ -866,7 +865,7 @@ const MyDrawer = () => {
                     "&:hover": { scale: "1.1" },
                     transition: "scale 0.1s 0s  linear",
                     padding: "0",
-                    minWidth: "calc(100% / 6 )",
+                    minWidth: "calc(100% /5)",
                     width: "fit-content",
                   }}
                   key={index}
