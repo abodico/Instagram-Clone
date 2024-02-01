@@ -46,6 +46,7 @@ import { useSelector } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
 // import CancelIcon from "@mui/icons-material/CancelRounded";
 import CancelIcon from "@mui/icons-material/Cancel";
+import DropDown from "./DropDown";
 const drawerWidth = 240,
   drawerSmall = 70;
 const MyDrawer = ({ sideCardsToggle, setSideCardsToggle }) => {
@@ -236,13 +237,14 @@ const MyDrawer = ({ sideCardsToggle, setSideCardsToggle }) => {
                 </ListItem>
               ))}
             </List>
-            <ListItemButton
+            {/* <ListItemButton
               sx={{
                 display: "flex",
                 justifyContent: "flex-start",
                 alignItems: "center",
                 mt: "30px",
                 mx: "16px",
+                maxHeight: "50px",
               }}
             >
               <ListItemIcon>
@@ -251,7 +253,8 @@ const MyDrawer = ({ sideCardsToggle, setSideCardsToggle }) => {
               <Typography component="p" color="black">
                 More
               </Typography>
-            </ListItemButton>
+            </ListItemButton> */}
+            <DropDown />
           </Drawer>
         </Box>
         <Box
@@ -585,13 +588,14 @@ const MyDrawer = ({ sideCardsToggle, setSideCardsToggle }) => {
               </ListItem>
             ))}
           </List>
-          <ListItem sx={{ p: 0, mt: 2, px: "5px" }}>
+          {/* <ListItem sx={{ p: 0, mt: 2, px: "5px" }}>
             <ListItemButton sx={{ borderRadius: "10px" }}>
               <ListItemIcon>
                 <MenuIcon sx={{ fontSize: "30px", color: "#000" }} />
               </ListItemIcon>
             </ListItemButton>
-          </ListItem>
+          </ListItem> */}
+          <DropDown />
         </Drawer>
         <Box
           sx={{

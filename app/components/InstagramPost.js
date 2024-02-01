@@ -63,25 +63,19 @@ const InstagramPost = (props) => {
             key={index + 20}
             sx={{
               position: "relative",
-              maxHeight: "600px",
+              minHeight: "500px",
+              maxHeight: "500px",
+              width: "100%",
               borderRadius: "6px",
               overflow: "hidden",
+              backgroundImage: `url(${item.src})`,
+              backgroundSize: "cover",
+              backgroundPositionY: "top",
+              backgroundPositionX: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundColor: "#000",
             }}
-          >
-            <Image
-              src={item}
-              alt={item.src}
-              style={{
-                height: "auto",
-                width: "100%",
-                verticalAlign: "base-line",
-                objectPosition: "center",
-                objectFit: "cover",
-                maxHeight: "50%",
-                padding: "0 2px",
-              }}
-            />
-          </Box>
+          ></Box>
         ))}
       </Slider>
     </Box>
@@ -125,7 +119,10 @@ const InstagramPost = (props) => {
         title={
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: "3px" }}>
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: "bold", fontSize: "16px" }}
+              >
                 {props.user}
               </Typography>
               {props.verified && (

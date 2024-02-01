@@ -319,19 +319,16 @@ const Page = () => {
             }}
           >
             {posts.map((item, index) => (
-              <Box key={index} sx={{ position: "relative" }}>
-                <Image
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    verticalAlign: "base-line",
-                    objectPosition: "center",
-                    objectFit: "cover",
-                    gridRow: "span 1",
-                  }}
-                  src={item.image}
-                  alt="post"
-                />
+              <Box
+                key={index}
+                sx={{
+                  position: "relative",
+                  backgroundImage: `url(${item.image.src})`,
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+              >
                 <PhotoLibrary
                   sx={{
                     color: "#fff",

@@ -180,8 +180,8 @@ const page = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: "2px",
-          mt: { lg: "0", xs: "64px" },
+          gap: "4px",
+          mt: { lg: "32px", xs: "64px" },
           mb: { lg: "0", xs: "56px" },
         }}
       >
@@ -212,24 +212,16 @@ const page = () => {
                     overflow: "hidden",
                     p: "2px",
                     position: "relative",
-                  }}
-                >
-                  <img
-                    src={
+                    backgroundImage: `url(${
                       item.media[0].type == im
                         ? item.media[0].source.src
                         : item.media[0].poster.src
-                    }
-                    alt={item.src}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      verticalAlign: "base-line",
-                      objectPosition: "center",
-                      objectFit: "cover",
-                    }}
-                    key={index}
-                  />
+                    })`,
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
                   {/* icon */}
                   <Box
                     sx={{
