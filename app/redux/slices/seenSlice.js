@@ -40,14 +40,14 @@ const stories = [
     stories: [{ story: images.ramistory, seen: false }],
   },
   {
-    user: "tarekalhajjeh",
-    image: images.tarek,
-    stories: [{ story: images.tarekstory, seen: false }],
-  },
-  {
     user: "solaimanaltush",
     image: images.solaiman,
     stories: [{ story: images.dinastory2, seen: false }],
+  },
+  {
+    user: "tarekalhajjeh",
+    image: images.tarek,
+    stories: [{ story: images.tarekstory, seen: false }],
   },
   {
     user: "altayebkakhia",
