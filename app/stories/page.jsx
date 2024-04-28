@@ -7,6 +7,7 @@ import {
     Fade,
     IconButton,
     Input,
+    LinearProgress,
     Paper,
     Typography,
 } from "@mui/material"
@@ -131,24 +132,47 @@ export default function Page() {
         show,
     ])
     // progress bar
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (!pause.isPaused && seconds > 0 && pause.timing < 100) {
-                setPause((prev) => {
-                    return { ...prev, timing: prev.timing + 20 }
-                })
-            }
-        }, 1000)
-        return () => {
-            clearInterval(interval)
-        }
-    }, [pause.isPaused, pause.timing, seconds])
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         if (!pause.isPaused && seconds > 0 && pause.timing < 100) {
+    //             setPause((prev) => {
+    //                 return { ...prev, timing: prev.timing + 20 }
+    //             })
+    //         }
+    //     }, 1000)
+    //     return () => {
+    //         clearInterval(interval)
+    //     }
+    // }, [pause.isPaused, pause.timing, seconds])
     // pause - resume
     const handlePauseToggle = () => {
         setPause((prev) => {
             return { ...pause, isPaused: !prev.isPaused }
         })
     }
+    // MUI PROGRESS
+    // const [progress, setProgress] = React.useState(0)
+
+    useEffect(() => {
+        if (!pause.isPaused) {
+            const timer = setInterval(() => {
+                setPause((prev) => {
+                    if (prev.timing === 100) {
+                        return { ...prev, timing: 100 }
+                    }
+                    const diff = 4
+                    return {
+                        ...prev,
+                        timing: Math.min(prev.timing + diff, 100),
+                    }
+                })
+            }, 250)
+
+            return () => {
+                clearInterval(timer)
+            }
+        }
+    }, [pause.isPaused])
     const theme = extendTheme({
         shadow: {
             story: "inset -10px -30px 40px 10px rgba(0 , 0 , 0 ,0.8) , inset -10px 10px 40px 10px rgba(0 , 0 , 0 ,0.8)",
@@ -348,29 +372,27 @@ export default function Page() {
                                                             height: "2px",
                                                         }}
                                                     >
-                                                        <Box
+                                                        <LinearProgress
+                                                            variant="determinate"
+                                                            value={
+                                                                index ==
+                                                                    show.i &&
+                                                                currentStory ==
+                                                                    storyIndex
+                                                                    ? pause.timing
+                                                                    : index ==
+                                                                          show.i &&
+                                                                      storyIndex <
+                                                                          currentStory
+                                                                    ? 100
+                                                                    : 0
+                                                            }
+                                                            color="info"
+                                                            valueBuffer={4}
                                                             sx={{
-                                                                height: "100%",
-                                                                width:
-                                                                    index ==
-                                                                        show.i &&
-                                                                    currentStory ==
-                                                                        storyIndex
-                                                                        ? `${pause.timing}%`
-                                                                        : index ==
-                                                                              show.i &&
-                                                                          storyIndex <
-                                                                              currentStory
-                                                                        ? "100%"
-                                                                        : "0",
-                                                                position:
-                                                                    "relative",
-                                                                backgroundColor:
-                                                                    "#aaa",
-                                                                transition:
-                                                                    "width 0.010s ease-out",
+                                                                height: "2px",
                                                             }}
-                                                        ></Box>
+                                                        />
                                                     </Box>
                                                 )
                                             )}
